@@ -10,9 +10,10 @@ const GMAIL_USER = process.env.GMAIL_USER;
 const GMAIL_PASS = process.env.GMAIL_PASS;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"))
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
 app.post("/contact", (req, res) => {
@@ -33,7 +34,7 @@ app.post("/contact", (req, res) => {
   };
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
-      console.log(error)
+      console.log(error);
       res.json({ Error: "Failed to send message" });
     } else {
       res.json({ Success: "Message sent!" });
