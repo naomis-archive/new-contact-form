@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.post("/contact", (req, res) => {
   const smtpTrans = nodemailer.createTransport({
-    host: "smpt.gmail.com",
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
@@ -33,9 +33,17 @@ app.post("/contact", (req, res) => {
   };
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
+      console.log(error)
       res.json({ Error: "Failed to send message" });
     } else {
       res.json({ Success: "Message sent!" });
     }
   });
+});
+
+const appUrl = process.env.PUBLIC_URL || "localhost";
+const appPort = process.env.PORT || "3000";
+
+app.listen(appPort, () => {
+  console.log(`App is listening on ${appUrl}:${appPort}`);
 });
