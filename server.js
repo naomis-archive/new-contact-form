@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -11,7 +12,7 @@ const GMAIL_PASS = process.env.GMAIL_PASS;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.redirect("/index.html");
+  res.sendFile(path.join(__dirname + "/index.html"));
 });
 
 app.post("/contact", (req, res) => {
