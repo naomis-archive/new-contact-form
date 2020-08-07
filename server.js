@@ -10,6 +10,10 @@ const GMAIL_PASS = process.env.GMAIL_PASS;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.redirect("/index.html");
+});
+
 app.post("/contact", (req, res) => {
   const smtpTrans = nodemailer.createTransport({
     host: "smpt.gmail.com",
