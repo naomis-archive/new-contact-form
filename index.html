@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Contact Me!</title>
+  </head>
+  <body>
+    <h1>Contact Nicholas</h1>
+    <p>
+      Please fill out the below form with as much detail as possible. I will
+      return your message as soon as I am able!
+    </p>
+    <form action="/contact" id="contact-form" method="post" role="form">
+      <fieldset>
+        <p><label for="name">Name</label></p>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+        />
+
+        <p><label for="email">Email</label></p>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Your email"
+          required
+        />
+
+        <p><label for="email">Subject</label></p>
+        <input
+          id="subject"
+          name="subject"
+          type="text"
+          placeholder="Subject of your message"
+          required
+        />
+
+        <p><label for="message">Message</label></p>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Enter your message here"
+          rows="3"
+          required
+        >
+        </textarea>
+
+        <p><button type="submit">Submit</button></p>
+      </fieldset>
+    </form>
+  </body>
+  <footer><a href="https://www.nhcarrigan.com">Return to Homepage</a></footer>
+</html>
