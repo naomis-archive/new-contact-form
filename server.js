@@ -34,7 +34,7 @@ app.post("/contact", (req, res) => {
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
       console.log(error);
-      res.json({ Error: "Failed to send message" });
+      res.json({ Error: error.message });
     } else {
       res.json({ Success: "Message sent!" });
     }
