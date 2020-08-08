@@ -7,10 +7,11 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const GMAIL_USER = process.env.GMAIL_USER;
-const GMAIL_PASS = process.env.GMAIL_PASS;
+const USER = process.env.USER;
+const PASS = process.env.PASS;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/index.html"));
@@ -18,12 +19,10 @@ app.get("/", (req, res) => {
 
 app.post("/contact", (req, res) => {
   const smtpTrans = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    service: "SendGrid",
     auth: {
-      user: GMAIL_USER,
-      pass: GMAIL_PASS,
+      user: USER,
+      pass: PASS,
     },
   });
   const mailOpts = {
