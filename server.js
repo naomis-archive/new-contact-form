@@ -26,10 +26,10 @@ app.post("/contact", (req, res) => {
     },
   });
   const mailOpts = {
-    from: "contact form",
+    from: req.body.email,
     to: GMAIL_USER,
     subject: req.body.subject,
-    text: `Dear Nicholas, \n You have received the following message from ${req.body.name}: \n ${req.body.message} \n Reply to them at ${req.body.email}`,
+    text: `Dear Nicholas, \n ${req.body.message} \n Sincerely, \n ${req.body.name}`,
   };
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
