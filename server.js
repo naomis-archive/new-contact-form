@@ -31,6 +31,24 @@ app.post("/contact", (req, res) => {
     subject: req.body.subject,
     text: `Dear Nicholas, \n ${req.body.message} \n Sincerely, \n ${req.body.name} \n ${req.body.email}`,
   };
+
+  const validateOpts = {
+    from: "noreply@em9176.nhcarrigan.com",
+    to: req.body.email,
+    subject: "Contact",
+    text: `Dear ${req.body.name}, \n Thank you for reaching out to us! Your message has been received, and we will be in touch as soon as possible. \n Sincerely, \n Nicholas Carrigan`,
+  };
+  let valid = true;
+  smtpTrans.sendMail(validateOpts, (error, response) => {
+    if (error) {
+      valid = false;
+      res.json({
+        Error:
+          "The email address you provided appears to be invalid. Please try again.",
+      });
+    }
+  });
+  if (!valid) return;
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
       console.log(error);
