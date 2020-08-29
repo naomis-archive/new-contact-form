@@ -4,9 +4,7 @@ A new version of the contact form - going to attempt handling the email submissi
 
 ## Live Version
 
-This page is not yet deployed.
-
-<!--This page is currently deployed. [View the live website.]()-->
+This page is currently deployed. [View the live website.](https://contact.nhcarrigan.com)
 
 ## Feedback, Bugs, and Contributions
 
