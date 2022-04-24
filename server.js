@@ -29,7 +29,7 @@ app.post("/contact", (req, res) => {
     from: "contact@em9176.nhcarrigan.com",
     to: GMAIL_USER,
     subject: req.body.subject,
-    text: `Dear Nicholas, \n ${req.body.message} \n Sincerely, \n ${req.body.name} \n ${req.body.email}`,
+    text: `Dear Naomi, \n ${req.body.message} \n Sincerely, \n ${req.body.name} \n ${req.body.email}`,
   };
   smtpTrans.sendMail(mailOpts, (error, response) => {
     if (error) {
